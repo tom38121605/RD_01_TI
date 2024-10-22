@@ -1,0 +1,62 @@
+
+ DUT  -- device under test
+ DTM -- direction to test
+
+
+===================================
+ 
+
+PSIGUI（发送指令）  --  PSIEVM（产生adc信号）  --  13269-adc (U4)  --  13269-i2c (U4)  --  10328-i2c (nrf52833) 
+
+
+
+===================================
+
+#    for commandx in (
+0b0000_0001,     //0x01  ，1， T1
+0b0100_0001,      //0x 41  ，1， T1
+0b1000_0001,      //0x81  ，1， T1   (默认temp)
+0b1100_0001,       //0xC1  ，2， T1，T2
+
+0b0000_0010,       //0x02  ，3， X1    ,Y1    ,Z1
+0b0100_0010,      //0x42  ，3， X1    ,Y1    ,Z1
+0b1000_0010,      //0x82  ，3， X1    ,Y1    ,Z1
+0b1100_0010,      //0xC2  ，6， X1    ,Y1    ,Z1， X2    ,Y2    ,Z2
+
+0b0000_0011,      //0x03  ，4， X1    ,Y1    ,Z1，T1
+0b0100_0011,     //0x43  ，4， X1    ,Y1    ,Z1，T1
+0b1000_0011,      //0x83  ，4， X1    ,Y1    ,Z1，T1
+
+0b1100_0011,      //0xC3  ，8， X1    ,Y1    ,Z1，T1， X2    ,Y2    ,Z2，T2
+0b1110_0011,      //0xE3  ，8， X1    ,Y1    ,Z1，T1， X2    ,Y2    ,Z2，T2
+
+0b0110_0001,    //0x61  ，1， T1
+
+0b0110_0010,      //0x62  ，3， X1    ,Y1    ,Z1
+0b1010_0010,     //0xA2  ，3， X1    ,Y1    ,Z1
+
+0b1000_0000,    //0x80  ，0
+0b0110_0000     //0xC0  ，0
+
+):
+#
+
+================================================
+
+
+
+
+        //change gain for channels 0, 1, 2 to 64
+
+        uint16_t   g_add = ads131m04_write_single_register(ADS131M04_GAIN_ADDRESS, 0x0666);
+        uint16_t   gain = ads131m04_read_single_register(ADS131M04_GAIN_ADDRESS);
+
+        //set data rate to 1khz
+        uint16_t   c_add = ads131m04_write_single_register(ADS131M04_CLOCK_ADDRESS, 0x0F16);
+        uint16_t   clk = ads131m04_read_single_register(ADS131M04_CLOCK_ADDRESS);
+        if(clk != 0x0F16 || gain != 0x0666)
+
+
+
+---------------------------------------
+

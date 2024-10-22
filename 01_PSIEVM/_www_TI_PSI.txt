@@ -1,0 +1,11 @@
+
+
+
+//SBAC168 — ADS8881EVM GUI   （需滑动到该处SUPPORT SOFTWARE，点击右边download，注册登录后下载）
+https://www.ti.com/tool/ADS8881EVMV2-PDK?keyMatch=ADS8881EVMV2-PDK&tisearch=universal_search&usecase=hardware#tech-docs   
+
+
+https://dr-download.ti.com/secure/software-development/gui-for-evaluation-module-evm/MD-OMBQKFvaJa/1.8.0/Setup_ADS8900B_EVM.exe
+
+
+
